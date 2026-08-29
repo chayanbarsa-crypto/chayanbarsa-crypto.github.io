@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portafolio de Jordy Vicente Abad: digitalización, análisis de datos, Power BI y mejora de procesos.">
+  <title>Jordy Vicente Abad · Digitalización y datos</title>
+  <style>
+    :root {
+      --ink: #142330;
+      --ink-soft: #50636f;
+      --paper: #f6f7f3;
+      --surface: #ffffff;
+      --line: #d8e0dc;
+      --brand: #007f78;
+      --brand-deep: #005b56;
+      --brand-wash: #dff3ef;
+      --sun: #f4b843;
+      --sun-wash: #fff4d9;
+      --night: #123444;
+      --max: 1160px;
+      --shadow: 0 18px 48px rgba(20, 35, 48, .08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    a:focus-visible { outline: 3px solid var(--sun); outline-offset: 4px; }
+    .container { width: min(calc(100% - 40px), var(--max)); margin: 0 auto; }
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--brand-deep);
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .section { padding: 100px 0; scroll-margin-top: 72px; }
+    .section--light { background: var(--surface); }
+    .section-heading { max-width: 680px; margin-bottom: 42px; }
+    .section-heading h2, .project-detail h3, .experience-copy h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      letter-spacing: -.035em;
+      line-height: 1.05;
+    }
+    .section-heading h2 { font-size: clamp(2.1rem, 4vw, 3.6rem); }
+    .section-heading p { margin: 18px 0 0; color: var(--ink-soft); font-size: 1.1rem; }
+
+    .topbar {
+      position: sticky;
+      z-index: 10;
+      top: 0;
+      border-bottom: 1px solid rgba(216, 224, 220, .75);
+      background: rgba(246, 247, 243, .92);
+      backdrop-filter: blur(12px);
+    }
+    .topbar-inner { min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { text-decoration: none; font-weight: 800; letter-spacing: -.02em; }
+    .brand span { color: var(--brand); }
+    .navigation { display: flex; gap: 21px; flex-wrap: wrap; justify-content: flex-end; }
+    .navigation a { color: var(--ink-soft); font-size: .9rem; font-weight: 700; text-decoration: none; }
+    .navigation a:hover { color: var(--brand); }
+
+    .hero { overflow: hidden; padding: 86px 0 94px; background: var(--night); color: white; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(260px, .55fr); align-items: end; gap: 54px; }
+    .hero .eyebrow { color: #9ce3d9; }
+    .hero h1 {
+      max-width: 880px;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3.15rem, 6.5vw, 6.4rem);
+      font-weight: 500;
+      letter-spacing: -.055em;
+      line-height: .94;
+    }
+    .hero h1 em { color: #a4e7dd; font-style: normal; }
+    .hero-intro { max-width: 650px; margin: 28px 0 0; color: #d3e1e6; font-size: clamp(1.05rem, 1.8vw, 1.28rem); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 11px 18px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-size: .93rem;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform .18s ease, background .18s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button--primary { color: var(--night); background: var(--sun); }
+    .button--secondary { border-color: rgba(255,255,255,.36); color: white; }
+    .button--secondary:hover { background: rgba(255,255,255,.1); }
+    .portrait { position: relative; min-height: 470px; margin: 0; overflow: hidden; border: 1px solid rgba(255,255,255,.22); border-radius: 18px; background: #0a222d; box-shadow: 0 24px 48px rgba(0,0,0,.2); }
+    .portrait::after { position: absolute; inset: 42% 0 0; content: ""; background: linear-gradient(to top, rgba(5, 21, 29, .9), rgba(5, 21, 29, 0)); pointer-events: none; }
+    .portrait img { display: block; width: 100%; height: 100%; min-height: 470px; object-fit: cover; object-position: center top; }
+    .portrait figcaption { position: absolute; z-index: 1; right: 25px; bottom: 23px; left: 25px; }
+    .portrait figcaption p { margin: 0; color: #d9e8eb; }
+    .portrait figcaption strong { display: block; margin: 6px 0 9px; color: white; font-size: 1.28rem; line-height: 1.17; }
+    .portrait .small-label { color: #a4e7dd; font-size: .73rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+
+    .experience { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(290px, .95fr); gap: 72px; align-items: start; }
+    .experience-copy h2 { font-size: clamp(2rem, 3.5vw, 3.25rem); }
+    .experience-copy > p { color: var(--ink-soft); font-size: 1.08rem; }
+    .role { margin-top: 30px; padding: 25px; border-left: 4px solid var(--brand); background: var(--brand-wash); }
+    .role h3 { margin: 0; font-size: 1.08rem; }
+    .role p { margin: 5px 0 0; color: var(--ink-soft); }
+    .impact-list { display: grid; gap: 12px; }
+    .impact {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface);
+    }
+    .impact b { display: block; margin-bottom: 4px; color: var(--brand-deep); }
+    .impact p { margin: 0; color: var(--ink-soft); font-size: .95rem; }
+
+    .project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .project-card {
+      display: flex;
+      min-height: 365px;
+      flex-direction: column;
+      padding: 29px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--surface);
+      box-shadow: 0 8px 24px rgba(20, 35, 48, .04);
+      transition: box-shadow .2s ease, transform .2s ease;
+    }
+    .project-card:hover { box-shadow: var(--shadow); transform: translateY(-4px); }
+    .project-number { color: var(--brand); font-size: .78rem; font-weight: 900; letter-spacing: .13em; }
+    .status { display: inline-flex; width: fit-content; margin-top: 21px; padding: 4px 9px; border-radius: 999px; color: var(--brand-deep); background: var(--brand-wash); font-size: .73rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+    .status--discovery { color: #765400; background: var(--sun-wash); }
+    .project-card h3 { margin: 16px 0 10px; font-family: Georgia, "Times New Roman", serif; font-size: 1.65rem; font-weight: 500; letter-spacing: -.03em; line-height: 1.09; }
+    .project-card p { margin: 0; color: var(--ink-soft); }
+    .project-card a { margin-top: auto; padding-top: 22px; color: var(--brand-deep); font-size: .92rem; font-weight: 800; text-decoration-thickness: 1.5px; text-underline-offset: 4px; }
+
+    .method-grid { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 62px; }
+    .principles { display: grid; gap: 14px; }
+    .principle { display: grid; grid-template-columns: 42px 1fr; gap: 14px; align-items: start; }
+    .principle-number { display: grid; width: 38px; height: 38px; place-items: center; border-radius: 50%; color: var(--brand-deep); background: var(--brand-wash); font-weight: 900; }
+    .principle h3 { margin: 2px 0 4px; font-size: 1rem; }
+    .principle p { margin: 0; color: var(--ink-soft); font-size: .95rem; }
+    .metric-table { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+    .metric-table caption { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+    .metric-table th, .metric-table td { padding: 15px 16px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    .metric-table th { color: var(--brand-deep); background: #f4fbf9; font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; }
+    .metric-table tr:last-child td { border-bottom: 0; }
+    .metric-table td { color: var(--ink-soft); font-size: .91rem; }
+    .metric-table td:first-child { color: var(--ink); font-weight: 750; }
+
+    .project-detail { scroll-margin-top: 80px; padding: 36px 0; border-top: 1px solid var(--line); }
+    .project-detail:first-of-type { border-top: 0; }
+    .project-detail-grid { display: grid; grid-template-columns: minmax(200px, .65fr) minmax(0, 1.35fr); gap: 48px; }
+    .project-detail .project-number { margin-bottom: 12px; }
+    .project-detail h3 { font-size: clamp(1.8rem, 3vw, 2.8rem); }
+    .detail-copy p { margin: 0; color: var(--ink-soft); font-size: 1.04rem; }
+    .detail-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 24px; }
+    .detail-columns div { padding: 18px; border-radius: 10px; background: #f2f6f5; }
+    .detail-columns h4 { margin: 0 0 6px; color: var(--brand-deep); font-size: .86rem; text-transform: uppercase; letter-spacing: .06em; }
+    .detail-columns p { font-size: .93rem; }
+    .back-link { display: inline-block; margin-top: 22px; color: var(--brand-deep); font-size: .9rem; font-weight: 800; }
+
+    .confidentiality { margin: 16px 0 0; padding: 18px 22px; border-left: 4px solid var(--sun); border-radius: 0 10px 10px 0; background: var(--sun-wash); color: #5f4b1c; font-size: .94rem; }
+    .contact { padding: 74px 0; color: white; background: var(--night); }
+    .contact-inner { display: flex; align-items: end; justify-content: space-between; gap: 32px; }
+    .contact h2 { max-width: 700px; margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.2rem, 4vw, 4rem); font-weight: 500; letter-spacing: -.04em; line-height: 1.02; }
+    .contact p { max-width: 600px; margin: 15px 0 0; color: #c9d9df; }
+    .contact-links { display: grid; min-width: 220px; gap: 10px; }
+    .contact-links a { color: #a4e7dd; font-size: 1rem; font-weight: 800; text-decoration-thickness: 1.5px; text-underline-offset: 4px; }
+    .contact-links span { color: #c9d9df; font-size: .82rem; }
+    footer { padding: 21px 0; color: var(--ink-soft); background: #edf0eb; font-size: .83rem; }
+    footer .container { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+
+    @media (max-width: 820px) {
+      .navigation { gap: 12px; }
+      .hero-grid, .experience, .method-grid, .project-detail-grid { grid-template-columns: 1fr; gap: 32px; }
+      .project-grid { grid-template-columns: 1fr; }
+      .project-card { min-height: 0; }
+      .contact-inner { align-items: start; flex-direction: column; }
+    }
+    @media (max-width: 560px) {
+      .container { width: min(calc(100% - 32px), var(--max)); }
+      .topbar-inner { min-height: auto; padding: 15px 0; align-items: flex-start; flex-direction: column; gap: 10px; }
+      .navigation { gap: 9px 14px; }
+      .navigation a { font-size: .82rem; }
+      .hero { padding: 68px 0 72px; }
+      .section { padding: 72px 0; }
+      .detail-columns { grid-template-columns: 1fr; }
+      .metric-table { font-size: .84rem; }
+      .metric-table th, .metric-table td { padding: 12px 10px; }
+    }
+    @media print {
+      .topbar, .hero-actions, .back-link { display: none; }
+      .hero { padding: 38px 0; }
+      .section { padding: 40px 0; }
+      .project-card { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#inicio">Jordy <span>Vicente Abad</span></a>
+      <nav class="navigation" aria-label="Navegación principal">
+        <a href="#experiencia">Experiencia</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#metodo">Método</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Digitalización · análisis de datos · mejora de procesos</p>
+          <h1>Convierto datos operativos en <em>mejoras que se pueden decidir.</em></h1>
+          <p class="hero-intro">Combino digitalización, datos y desarrollo de producto: convierto necesidades operativas en iniciativas medibles y construyo herramientas personales con las que valido ideas de automatización, auditoría y análisis financiero.</p>
+          <div class="hero-actions">
+            <a class="button button--primary" href="#proyectos">Ver proyectos</a>
+            <a class="button button--secondary" href="#metodo">Cómo mido la viabilidad</a>
+          </div>
+        </div>
+        <figure class="portrait">
+          <img src="assets/jordy-vicente-abad-portrait-v2.png" alt="Retrato profesional de Jordy Vicente Abad">
+          <figcaption>
+            <span class="small-label">Rol actual</span>
+            <strong>Técnico de Digitalización</strong>
+            <p>Randstad · proyecto para Feníe Energía<br>Actualidad</p>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section section--light" id="experiencia">
+      <div class="container experience">
+        <div class="experience-copy">
+          <p class="eyebrow">Experiencia actual</p>
+          <h2>De la oportunidad a una decisión basada en evidencia.</h2>
+          <p>Actualmente sustituyo a un técnico de digitalización en Randstad, dentro de un proyecto para Feníe Energía. Mi trabajo consiste en proponer y dar seguimiento a iniciativas de mejora basadas en datos, conectando a los departamentos que deben hacerlas posibles.</p>
+          <div class="role">
+            <h3>Qué hago en el día a día</h3>
+            <p>Analizo necesidades y datos operativos, preparo la evaluación de coste, tiempo e impacto con las áreas implicadas y dirección, y convierto el avance de cada iniciativa en indicadores visibles en Power BI.</p>
+          </div>
+        </div>
+        <div class="impact-list" aria-label="Áreas de aportación">
+          <article class="impact">
+            <b>Identificación de mejoras</b>
+            <p>Impulso una cartera de tres iniciativas de digitalización, priorizadas a partir de necesidades reales y evidencia disponible.</p>
+          </article>
+          <article class="impact">
+            <b>Coordinación entre áreas</b>
+            <p>Contrasto requisitos, tiempos, costes y dependencias con los equipos implicados y con dirección.</p>
+          </article>
+          <article class="impact">
+            <b>Seguimiento con Power BI</b>
+            <p>Diseño indicadores para ver el avance, la adopción y el efecto operativo de cada mejora.</p>
+          </article>
+          <article class="impact">
+            <b>Desarrollo y validación asistidos por IA</b>
+            <p>Uso Claude Code como apoyo de desarrollo; defino el alcance, reviso la lógica, diseño las pruebas y valido los resultados antes de darlos por buenos.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="proyectos">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Proyectos profesionales y personales</p>
+          <h2>Del seguimiento de mejoras a productos propios de auditoría y análisis financiero.</h2>
+          <p>Cada tarjeta enlaza a su caso dentro de este portafolio. Los proyectos profesionales se describen sin información sensible; los personales reflejan su alcance técnico y estado real de desarrollo.</p>
+        </div>
+        <div class="project-grid">
+          <article class="project-card">
+            <span class="project-number">PROYECTO 01</span>
+            <span class="status">En curso</span>
+            <h3>Cartera de mejoras de digitalización</h3>
+            <p>Marco para evaluar y priorizar tres iniciativas: necesidad, áreas implicadas, esfuerzo, coste, dependencias, riesgo e impacto esperado.</p>
+            <a href="#cartera-mejoras">Ver caso y medición →</a>
+          </article>
+          <article class="project-card">
+            <span class="project-number">PROYECTO 02</span>
+            <span class="status">En curso</span>
+            <h3>Medición de un sistema RAG</h3>
+            <p>Seguimiento del sistema de recuperación y generación para entender su resolución autónoma, escalados y oportunidades de mejora.</p>
+            <a href="#rag">Ver caso y medición →</a>
+          </article>
+          <article class="project-card">
+            <span class="project-number">PROYECTO 03</span>
+            <span class="status status--discovery">Diseño y validación</span>
+            <h3>Autonomía de usuarios</h3>
+            <p>Iniciativa orientada a que los usuarios resuelvan más gestiones por sí mismos, reduciendo fricción y dependencia de soporte.</p>
+            <a href="#autonomia">Ver caso y medición →</a>
+          </article>
+          <article class="project-card">
+            <span class="project-number">PROYECTO 04 · PERSONAL</span>
+            <span class="status">En desarrollo</span>
+            <h3>ORis · inteligencia financiera</h3>
+            <p>Producto personal para auditar extractos bancarios, extraer movimientos, validarlos, categorizarlos y conservarlos con trazabilidad.</p>
+            <a href="#oris">Ver caso y estado real →</a>
+          </article>
+          <article class="project-card">
+            <span class="project-number">PROYECTO 05 · PERSONAL</span>
+            <span class="status">Piloto ejecutado</span>
+            <h3>Auditoría documental PDF</h3>
+            <p>Motor de auditoría documental con reglas, evidencia y salidas estructuradas para revisar calidad y preparar mejoras sobre una base PDF.</p>
+            <a href="#auditoria-pdf">Ver caso y resultados →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--light" id="metodo">
+      <div class="container method-grid">
+        <div>
+          <div class="section-heading">
+            <p class="eyebrow">Mi forma de trabajar</p>
+            <h2>Medir antes de prometer.</h2>
+            <p>Una idea no se convierte en mejora por tener buena intención. Necesita una línea de partida, una hipótesis comprobable y una forma clara de tomar una decisión.</p>
+          </div>
+          <div class="principles">
+            <article class="principle">
+              <span class="principle-number">1</span>
+              <div><h3>Entender el problema</h3><p>Defino qué necesidad se quiere resolver, para quién y en qué punto del proceso aparece.</p></div>
+            </article>
+            <article class="principle">
+              <span class="principle-number">2</span>
+              <div><h3>Validar la factibilidad</h3><p>Contrasto esfuerzo, coste, tecnología, responsables y dependencias con las áreas que conocen la operación.</p></div>
+            </article>
+            <article class="principle">
+              <span class="principle-number">3</span>
+              <div><h3>Construir la medición</h3><p>Selecciono indicadores trazables y establezco una línea base para no confundir percepción con resultado.</p></div>
+            </article>
+            <article class="principle">
+              <span class="principle-number">4</span>
+              <div><h3>Decidir con datos</h3><p>El seguimiento sirve para ajustar, escalar o frenar una iniciativa a tiempo; no solo para reportar actividad.</p></div>
+            </article>
+          </div>
+        </div>
+        <div>
+          <table class="metric-table">
+            <caption>Marco de medición de iniciativas de digitalización</caption>
+            <thead>
+              <tr><th>Pregunta de decisión</th><th>Indicadores a observar</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>¿Resuelve la necesidad?</td><td>Finalización correcta, resolución autónoma, recontactos y escalados.</td></tr>
+              <tr><td>¿Las personas lo usan?</td><td>Usuarios activos, recurrencia, adopción y abandono del flujo.</td></tr>
+              <tr><td>¿Mejora la operación?</td><td>Volumen evitado, pasos reducidos, tiempos disponibles y carga trasladada.</td></tr>
+              <tr><td>¿Es viable económicamente?</td><td>Esfuerzo de implantación, coste recurrente, beneficio estimado y riesgos.</td></tr>
+              <tr><td>¿Podemos confiar en la conclusión?</td><td>Calidad, cobertura, consistencia y trazabilidad del dato utilizado.</td></tr>
+            </tbody>
+          </table>
+          <p class="confidentiality"><strong>Nota de confidencialidad.</strong> Este portafolio no publica datos internos ni resultados no autorizados de proyectos profesionales. Los proyectos personales describen sólo funcionalidades, pruebas y resultados documentados en sus repositorios.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Detalle de proyectos">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Casos de proyecto</p>
+          <h2>El trabajo, las evidencias y los siguientes pasos de cada iniciativa.</h2>
+        </div>
+
+        <article class="project-detail" id="cartera-mejoras">
+          <div class="project-detail-grid">
+            <div>
+              <p class="project-number">PROYECTO 01 · EN CURSO</p>
+              <h3>Cartera de mejoras de digitalización</h3>
+            </div>
+            <div class="detail-copy">
+              <p>Coordino la definición de tres mejoras potenciales a partir de datos y necesidades de la operación. La propuesta de cada una se trabaja con los departamentos afectados y dirección para convertir una idea en una decisión: qué problema ataca, qué recursos requiere, qué coste tiene, quién interviene y cómo se comprobará su resultado.</p>
+              <div class="detail-columns">
+                <div><h4>Objetivo</h4><p>Priorizar iniciativas de digitalización con una evaluación común y defendible.</p></div>
+                <div><h4>Mi contribución</h4><p>Análisis de la oportunidad, coordinación de la información y diseño del seguimiento en Power BI.</p></div>
+                <div><h4>Cómo se mide</h4><p>Estado, hitos, esfuerzo, coste previsto, riesgos, adopción e impacto acordado para cada caso.</p></div>
+                <div><h4>Decisión esperada</h4><p>Avanzar, replantear o descartar según evidencia de factibilidad e impacto.</p></div>
+              </div>
+              <a class="back-link" href="#proyectos">← Volver a proyectos</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-detail" id="rag">
+          <div class="project-detail-grid">
+            <div>
+              <p class="project-number">PROYECTO 02 · EN CURSO</p>
+              <h3>Medición de un sistema RAG</h3>
+            </div>
+            <div class="detail-copy">
+              <p>Llevo el seguimiento de una iniciativa basada en recuperación y generación de información (RAG). El foco no es solo mostrar actividad del sistema, sino establecer si ayuda a resolver consultas, cuándo requiere intervención humana y qué patrones permiten orientar una mejora de datos, contenido o experiencia.</p>
+              <div class="detail-columns">
+                <div><h4>Objetivo</h4><p>Evaluar con datos el desempeño y la factibilidad operativa de la solución RAG.</p></div>
+                <div><h4>Mi contribución</h4><p>Definición de métricas, revisión de calidad y estructura del dato, y seguimiento en Power BI.</p></div>
+                <div><h4>Cómo se mide</h4><p>Resolución autónoma, escalados, volumen de uso, categorías, cobertura y evolución de los indicadores.</p></div>
+                <div><h4>Criterio de rigor</h4><p>Separar los indicadores directamente calculables de los que requieren validación adicional o una fuente complementaria.</p></div>
+              </div>
+              <a class="back-link" href="#proyectos">← Volver a proyectos</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-detail" id="autonomia">
+          <div class="project-detail-grid">
+            <div>
+              <p class="project-number">PROYECTO 03 · DISEÑO Y VALIDACIÓN</p>
+              <h3>Autonomía de usuarios</h3>
+            </div>
+            <div class="detail-copy">
+              <p>Este proyecto busca que los usuarios puedan completar más gestiones de forma autónoma. La iniciativa se plantea como una mejora medible: además de diseñar una solución útil, hay que comprobar si las personas consiguen terminar el proceso, si reducen solicitudes de ayuda y si el cambio es sostenible para la organización.</p>
+              <div class="detail-columns">
+                <div><h4>Objetivo</h4><p>Reducir fricción y dependencia en gestiones recurrentes mediante una experiencia más autónoma.</p></div>
+                <div><h4>Mi contribución</h4><p>Definición del problema, contraste de viabilidad con las áreas implicadas y planificación de la medición.</p></div>
+                <div><h4>Cómo se mide</h4><p>Finalización del flujo, uso, abandono, solicitudes de soporte, recontactos y satisfacción cuando exista una fuente fiable.</p></div>
+                <div><h4>Decisión esperada</h4><p>Determinar si la solución reduce carga y mejora la experiencia antes de ampliar su alcance.</p></div>
+              </div>
+              <a class="back-link" href="#proyectos">← Volver a proyectos</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-detail" id="oris">
+          <div class="project-detail-grid">
+            <div>
+              <p class="project-number">PROYECTO 04 · PERSONAL · EN DESARROLLO</p>
+              <h3>ORis · inteligencia financiera</h3>
+            </div>
+            <div class="detail-copy">
+              <p>ORis es un producto personal de inteligencia financiera para convertir extractos bancarios en información utilizable: audita el PDF, extrae los movimientos, comprueba que los importes cuadran, permite categorizarlos y prepara su persistencia para consultarlos desde distintos dispositivos. Une un núcleo Python de auditoría con una interfaz web en Next.js y un modelo de datos en PostgreSQL.</p>
+              <div class="detail-columns">
+                <div><h4>Objetivo</h4><p>Ofrecer una forma fiable de revisar y organizar la información de extractos bancarios sin perder trazabilidad.</p></div>
+                <div><h4>Construido</h4><p>Núcleo Python para PDF y validación; interfaz en Next.js, React y TypeScript; modelo de datos y migraciones con Drizzle.</p></div>
+                <div><h4>Decisiones de fiabilidad</h4><p>Importes exactos con tipo decimal, deduplicación por hash, comprobación de saldos y prioridad de las correcciones manuales frente a reglas o IA.</p></div>
+                <div><h4>Estado real</h4><p>El núcleo, el esquema y la persistencia están implementados; la integración de extracción con modelo, la categorización y la autenticación siguen en desarrollo.</p></div>
+              </div>
+              <a class="back-link" href="#proyectos">← Volver a proyectos</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-detail" id="auditoria-pdf">
+          <div class="project-detail-grid">
+            <div>
+              <p class="project-number">PROYECTO 05 · PERSONAL · PILOTO EJECUTADO</p>
+              <h3>Auditoría documental PDF</h3>
+            </div>
+            <div class="detail-copy">
+              <p>Proyecto de auditoría documental para revisar PDFs contra un checklist de negocio. El flujo extrae el contenido, aplica reglas estructuradas, guarda un resultado por documento para poder reanudar el lote y produce un Excel para analizar los hallazgos. También existe una demo local en Streamlit con reglas deterministas y un modo de análisis mediante la API de Anthropic.</p>
+              <div class="detail-columns">
+                <div><h4>Piloto documentado</h4><p>15 documentos, 104 páginas y 510 evaluaciones (34 reglas por documento), siempre con evidencia textual asociada a los incumplimientos.</p></div>
+                <div><h4>Construido</h4><p>Pipeline en Python con PyMuPDF, Pydantic, reintentos, JSON reanudable y exportación a Excel; demo interactiva en Streamlit.</p></div>
+                <div><h4>Resultado útil</h4><p>El piloto permitió identificar patrones de documentación y generar versiones corregidas de los documentos de prueba de forma automatizada.</p></div>
+                <div><h4>Límite reconocido</h4><p>El test antes/después para demostrar impacto sobre el sistema RAG está preparado, pero aún no se ha ejecutado; no se presenta como impacto demostrado.</p></div>
+              </div>
+              <a class="back-link" href="#proyectos">← Volver a proyectos</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact" id="contacto">
+      <div class="container contact-inner">
+        <div>
+          <p class="eyebrow">Contacto</p>
+          <h2>Digitalización con una pregunta clara: ¿qué evidencia tenemos para seguir adelante?</h2>
+          <p>Perfil orientado a análisis de datos, Power BI, mejora de procesos, automatización documental y desarrollo de productos propios.</p>
+        </div>
+        <div class="contact-links" aria-label="Datos de contacto">
+          <span>Contacto directo</span>
+          <a href="tel:+34603460945">603 460 945</a>
+          <a href="mailto:avc.jordy@gmail.com">avc.jordy@gmail.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <span>© 2026 Jordy Vicente Abad</span>
+      <span>Portafolio profesional · versión pública</span>
+    </div>
+  </footer>
+</body>
+</html>
