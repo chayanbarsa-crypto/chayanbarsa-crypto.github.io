@@ -146,6 +146,9 @@
     .project-card h3 { margin: 16px 0 10px; font-family: Georgia, "Times New Roman", serif; font-size: 1.65rem; font-weight: 500; letter-spacing: -.03em; line-height: 1.09; }
     .project-card p { margin: 0; color: var(--ink-soft); }
     .project-card a { margin-top: auto; padding-top: 22px; color: var(--brand-deep); font-size: .92rem; font-weight: 800; text-decoration-thickness: 1.5px; text-underline-offset: 4px; }
+    .project-demo-icon { display: flex; width: fit-content; align-items: center; gap: 10px; margin: 16px 0 0 !important; padding-top: 0 !important; color: var(--brand-deep); text-decoration: none; }
+    .project-demo-icon img { width: 52px; height: 52px; border-radius: 12px; object-fit: cover; box-shadow: 0 6px 16px rgba(80, 12, 23, .18); }
+    .project-demo-icon span { font-size: .82rem; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 4px; }
 
     .method-grid { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 62px; }
     .principles { display: grid; gap: 14px; }
@@ -171,6 +174,19 @@
     .detail-columns div { padding: 18px; border-radius: 10px; background: #f2f6f5; }
     .detail-columns h4 { margin: 0 0 6px; color: var(--brand-deep); font-size: .86rem; text-transform: uppercase; letter-spacing: .06em; }
     .detail-columns p { font-size: .93rem; }
+    .demo-showcase { display: grid; grid-template-columns: minmax(180px, .58fr) minmax(0, 1.42fr); gap: 18px; align-items: stretch; margin-top: 24px; }
+    .demo-icon-link { display: flex; min-height: 220px; flex-direction: column; align-items: center; justify-content: center; gap: 13px; padding: 20px; border: 1px solid #d8b5bd; border-radius: 14px; color: #701126; background: #fff7f8; font-size: .91rem; font-weight: 800; text-align: center; text-decoration: none; transition: transform .18s ease, box-shadow .18s ease; }
+    .demo-icon-link:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(112, 17, 38, .13); }
+    .demo-icon-link img { width: min(138px, 100%); border-radius: 22px; box-shadow: 0 10px 22px rgba(80, 12, 23, .2); }
+    .demo-sidebar { padding: 22px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+    .demo-sidebar .eyebrow { margin-bottom: 12px; }
+    .demo-facts { display: grid; gap: 11px; margin: 0; }
+    .demo-facts div { padding-bottom: 11px; border-bottom: 1px solid var(--line); }
+    .demo-facts div:last-child { padding-bottom: 0; border-bottom: 0; }
+    .demo-facts dt { color: var(--brand-deep); font-size: .78rem; font-weight: 850; letter-spacing: .055em; text-transform: uppercase; }
+    .demo-facts dd { margin: 3px 0 0; color: var(--ink-soft); font-size: .91rem; }
+    .decision { color: #765400; font-weight: 800; }
+    .demo-note { margin: 18px 0 0 !important; padding: 15px 17px; border-left: 4px solid var(--sun); border-radius: 0 10px 10px 0; background: var(--sun-wash); color: #5f4b1c !important; font-size: .92rem !important; }
     .back-link { display: inline-block; margin-top: 22px; color: var(--brand-deep); font-size: .9rem; font-weight: 800; }
 
     .confidentiality { margin: 16px 0 0; padding: 18px 22px; border-left: 4px solid var(--sun); border-radius: 0 10px 10px 0; background: var(--sun-wash); color: #5f4b1c; font-size: .94rem; }
@@ -186,7 +202,7 @@
 
     @media (max-width: 820px) {
       .navigation { gap: 12px; }
-      .hero-grid, .experience, .method-grid, .project-detail-grid { grid-template-columns: 1fr; gap: 32px; }
+      .hero-grid, .experience, .method-grid, .project-detail-grid, .demo-showcase { grid-template-columns: 1fr; gap: 32px; }
       .project-grid { grid-template-columns: 1fr; }
       .project-card { min-height: 0; }
       .contact-inner { align-items: start; flex-direction: column; }
@@ -319,6 +335,10 @@
             <span class="status">Piloto ejecutado</span>
             <h3>Auditoría documental PDF</h3>
             <p>Motor de auditoría documental con reglas, evidencia y salidas estructuradas para revisar calidad y preparar mejoras sobre una base PDF.</p>
+            <a class="project-demo-icon" href="https://auditoria-documental-idp.streamlit.app/" target="_blank" rel="noopener noreferrer" aria-label="Abrir la demo de auditoría documental en Streamlit">
+              <img src="assets/auditor-idp-icon.png" alt="Icono de la demo de auditoría documental">
+              <span>Abrir demo ↗</span>
+            </a>
             <a href="#auditoria-pdf">Ver caso y resultados →</a>
           </article>
         </div>
@@ -461,7 +481,23 @@
               <h3>Auditoría documental PDF</h3>
             </div>
             <div class="detail-copy">
-              <p>Proyecto de auditoría documental para revisar PDFs contra un checklist de negocio. El flujo extrae el contenido, aplica reglas estructuradas, guarda un resultado por documento para poder reanudar el lote y produce un Excel para analizar los hallazgos. También existe una demo local en Streamlit con reglas deterministas y un modo de análisis mediante la API de Anthropic.</p>
+              <p>Proyecto de auditoría documental para revisar PDFs contra un checklist de negocio. El flujo extrae el contenido, aplica reglas estructuradas, guarda un resultado por documento para poder reanudar el lote y produce un Excel para analizar los hallazgos. También cuenta con una demo en Streamlit con reglas deterministas y un modo de análisis mediante la API de Anthropic.</p>
+              <div class="demo-showcase">
+                <a class="demo-icon-link" href="https://auditoria-documental-idp.streamlit.app/" target="_blank" rel="noopener noreferrer" aria-label="Abrir la demo de auditoría documental en Streamlit">
+                  <img src="assets/auditor-idp-icon.png" alt="Icono de acceso a la demo de auditoría documental">
+                  <span>Abrir demo en Streamlit ↗</span>
+                </a>
+                <aside class="demo-sidebar" aria-label="Ficha de la demo de auditoría documental">
+                  <p class="eyebrow">Ficha de la demo</p>
+                  <dl class="demo-facts">
+                    <div><dt>Precio por documento</dt><dd><span class="decision">Decisión: no publicarlo todavía.</span> Sin una medición repetida por páginas, complejidad y uso de IA, un precio fijo sería poco fiable.</dd></div>
+                    <div><dt>Checklist configurable</dt><dd>6 reglas de negocio: firmas, fechas, importes, estructura, identificadores y protección de datos.</dd></div>
+                    <div><dt>Límite de la demo</dt><dd>Hasta 2 documentos por lote y 25 MB por PDF, para mantener un uso controlado del entorno.</dd></div>
+                    <div><dt>Resultados trazables</dt><dd>KPIs, incidencias con evidencia, JSON integrable y documento anotado para contrastar los hallazgos.</dd></div>
+                  </dl>
+                </aside>
+              </div>
+              <p class="demo-note"><strong>Si el modo de IA no completa una prueba:</strong> las reglas deterministas no consumen crédito; el análisis con IA requiere una clave propia con saldo en la API. Si esa cuenta no tiene fondos, la prueba no se ejecuta.</p>
               <div class="detail-columns">
                 <div><h4>Piloto documentado</h4><p>15 documentos, 104 páginas y 510 evaluaciones (34 reglas por documento), siempre con evidencia textual asociada a los incumplimientos.</p></div>
                 <div><h4>Construido</h4><p>Pipeline en Python con PyMuPDF, Pydantic, reintentos, JSON reanudable y exportación a Excel; demo interactiva en Streamlit.</p></div>
