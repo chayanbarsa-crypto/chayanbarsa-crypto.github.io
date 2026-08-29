@@ -149,6 +149,8 @@
     .project-demo-icon { display: flex; width: fit-content; align-items: center; gap: 10px; margin: 16px 0 0 !important; padding-top: 0 !important; color: var(--brand-deep); text-decoration: none; }
     .project-demo-icon img { width: 52px; height: 52px; border-radius: 12px; object-fit: cover; box-shadow: 0 6px 16px rgba(80, 12, 23, .18); }
     .project-demo-icon span { font-size: .82rem; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 4px; }
+    .project-demo-icon--oris { color: #1b4c7d; }
+    .project-demo-icon--oris img { box-shadow: 0 6px 16px rgba(27, 76, 125, .2); }
 
     .method-grid { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 62px; }
     .principles { display: grid; gap: 14px; }
@@ -178,6 +180,9 @@
     .demo-icon-link { display: flex; min-height: 220px; flex-direction: column; align-items: center; justify-content: center; gap: 13px; padding: 20px; border: 1px solid #d8b5bd; border-radius: 14px; color: #701126; background: #fff7f8; font-size: .91rem; font-weight: 800; text-align: center; text-decoration: none; transition: transform .18s ease, box-shadow .18s ease; }
     .demo-icon-link:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(112, 17, 38, .13); }
     .demo-icon-link img { width: min(138px, 100%); border-radius: 22px; box-shadow: 0 10px 22px rgba(80, 12, 23, .2); }
+    .demo-icon-link--oris { border-color: #b6c9df; color: #1b4c7d; background: #f3f8fd; }
+    .demo-icon-link--oris:hover { box-shadow: 0 12px 26px rgba(27, 76, 125, .14); }
+    .demo-icon-link--oris img { box-shadow: 0 10px 22px rgba(27, 76, 125, .2); }
     .demo-sidebar { padding: 22px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
     .demo-sidebar .eyebrow { margin-bottom: 12px; }
     .demo-facts { display: grid; gap: 11px; margin: 0; }
@@ -187,6 +192,7 @@
     .demo-facts dd { margin: 3px 0 0; color: var(--ink-soft); font-size: .91rem; }
     .decision { color: #765400; font-weight: 800; }
     .demo-note { margin: 18px 0 0 !important; padding: 15px 17px; border-left: 4px solid var(--sun); border-radius: 0 10px 10px 0; background: var(--sun-wash); color: #5f4b1c !important; font-size: .92rem !important; }
+    .demo-note--oris { border-left-color: #2f6596; color: #23496b !important; background: #edf5fc; }
     .back-link { display: inline-block; margin-top: 22px; color: var(--brand-deep); font-size: .9rem; font-weight: 800; }
 
     .confidentiality { margin: 16px 0 0; padding: 18px 22px; border-left: 4px solid var(--sun); border-radius: 0 10px 10px 0; background: var(--sun-wash); color: #5f4b1c; font-size: .94rem; }
@@ -328,6 +334,10 @@
             <span class="status">En desarrollo</span>
             <h3>ORis · inteligencia financiera</h3>
             <p>Producto personal para auditar extractos bancarios, extraer movimientos, validarlos, categorizarlos y conservarlos con trazabilidad.</p>
+            <a class="project-demo-icon project-demo-icon--oris" href="https://oris-psi.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Abrir la demo de ORis">
+              <img src="assets/oris-icon.png" alt="Icono de la demo de ORis">
+              <span>Abrir demo ↗</span>
+            </a>
             <a href="#oris">Ver caso y estado real →</a>
           </article>
           <article class="project-card">
@@ -463,6 +473,22 @@
             </div>
             <div class="detail-copy">
               <p>ORis es un producto personal de inteligencia financiera para convertir extractos bancarios en información utilizable: audita el PDF, extrae los movimientos, comprueba que los importes cuadran, permite categorizarlos y prepara su persistencia para consultarlos desde distintos dispositivos. Une un núcleo Python de auditoría con una interfaz web en Next.js y un modelo de datos en PostgreSQL.</p>
+              <div class="demo-showcase">
+                <a class="demo-icon-link demo-icon-link--oris" href="https://oris-psi.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Abrir la demo de ORis">
+                  <img src="assets/oris-icon.png" alt="Icono de acceso a la demo de ORis">
+                  <span>Abrir demo de ORis ↗</span>
+                </a>
+                <aside class="demo-sidebar" aria-label="Ficha de la demo de ORis">
+                  <p class="eyebrow">Ficha de ORis</p>
+                  <dl class="demo-facts">
+                    <div><dt>Precio por extracto</dt><dd><span class="decision">Decisión: no publicarlo todavía.</span> ORis es una herramienta personal en desarrollo y no tiene un modelo comercial ni una operación en producción que permita fijarlo con rigor.</dd></div>
+                    <div><dt>Validación financiera</dt><dd>El núcleo contempla cuadre de importes, orden cronológico e IBAN: las tres comprobaciones relevantes para extractos bancarios.</dd></div>
+                    <div><dt>Integridad de los datos</dt><dd>Importes con precisión decimal y deduplicación por hash para evitar céntimos fantasma y movimientos duplicados.</dd></div>
+                    <div><dt>Control del usuario</dt><dd>La categorización registra su procedencia; una corrección manual tiene prioridad sobre reglas o IA.</dd></div>
+                  </dl>
+                </aside>
+              </div>
+              <p class="demo-note demo-note--oris"><strong>Uso responsable de la demo:</strong> muestra la interfaz y el avance del producto, pero no está preparada para guardar extractos reales. La autenticación de servidor y la conexión operativa a la base de datos siguen pendientes.</p>
               <div class="detail-columns">
                 <div><h4>Objetivo</h4><p>Ofrecer una forma fiable de revisar y organizar la información de extractos bancarios sin perder trazabilidad.</p></div>
                 <div><h4>Construido</h4><p>Núcleo Python para PDF y validación; interfaz en Next.js, React y TypeScript; modelo de datos y migraciones con Drizzle.</p></div>
