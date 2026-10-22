@@ -318,7 +318,7 @@
             <span class="status">En desarrollo</span>
             <h3>ORis · inteligencia financiera</h3>
             <p>Producto personal para auditar extractos bancarios, extraer movimientos, validarlos, categorizarlos y conservarlos con trazabilidad.</p>
-            <a class="project-demo-icon project-demo-icon--oris" href="https://oris-psi.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Abrir la demo de ORis">
+            <a class="project-demo-icon project-demo-icon--oris" href="https://orisapp.es/" target="_blank" rel="noopener noreferrer" aria-label="Abrir la demo de ORis">
               <img src="assets/oris-icon.png" alt="Icono de la demo de ORis">
               <span>Abrir demo ↗</span>
             </a>
@@ -458,7 +458,7 @@
             <div class="detail-copy">
               <p>ORis es un producto personal de inteligencia financiera para convertir extractos bancarios en información utilizable: audita el PDF, extrae los movimientos, comprueba que los importes cuadran, permite categorizarlos y prepara su persistencia para consultarlos desde distintos dispositivos. Une un núcleo Python de auditoría con una interfaz web en Next.js y un modelo de datos en PostgreSQL.</p>
               <div class="demo-showcase">
-                <a class="demo-icon-link demo-icon-link--oris" href="https://oris-psi.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Abrir la demo de ORis">
+                <a class="demo-icon-link demo-icon-link--oris" href="https://orisapp.es/" target="_blank" rel="noopener noreferrer" aria-label="Abrir la demo de ORis">
                   <img src="assets/oris-icon.png" alt="Icono de acceso a la demo de ORis">
                   <span>Abrir demo de ORis ↗</span>
                 </a>
@@ -472,12 +472,12 @@
                   </dl>
                 </aside>
               </div>
-              <p class="demo-note demo-note--oris"><strong>Uso responsable de la demo:</strong> muestra la interfaz y el avance del producto, pero no está preparada para guardar extractos reales. La autenticación de servidor y la conexión operativa a la base de datos siguen pendientes.</p>
+              <p class="demo-note demo-note--oris"><strong>Acceso:</strong> ORis está desplegado en su propio dominio, con cuentas protegidas por PIN y datos persistidos en PostgreSQL. Las altas se abren por correo con un número limitado de plazas mientras el producto está en pruebas.</p>
               <div class="detail-columns">
                 <div><h4>Objetivo</h4><p>Ofrecer una forma fiable de revisar y organizar la información de extractos bancarios sin perder trazabilidad.</p></div>
                 <div><h4>Construido</h4><p>Núcleo Python para PDF y validación; interfaz en Next.js, React y TypeScript; modelo de datos y migraciones con Drizzle.</p></div>
                 <div><h4>Decisiones de fiabilidad</h4><p>Importes exactos con tipo decimal, deduplicación por hash, comprobación de saldos y prioridad de las correcciones manuales frente a reglas o IA.</p></div>
-                <div><h4>Estado real</h4><p>El núcleo, el esquema y la persistencia están implementados; la integración de extracción con modelo, la categorización y la autenticación siguen en desarrollo.</p></div>
+                <div><h4>Estado real</h4><p>En producción en orisapp.es: importación de movimientos desde Excel o CSV del banco, cuadre de saldos, categorización con reglas que aprenden de las correcciones, copiloto para preguntar sobre los propios movimientos y cuentas con PIN.</p></div>
               </div>
               <a class="back-link" href="#proyectos">← Volver a proyectos</a>
             </div>
